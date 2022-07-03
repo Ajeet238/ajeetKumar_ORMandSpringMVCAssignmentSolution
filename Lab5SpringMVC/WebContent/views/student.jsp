@@ -52,7 +52,7 @@
 		<br />
 		<div class="col-sm">
 			<a href="addStudent?id=-1">
-				<button type="button" class="btn btn-primary">Add Student</button>
+				<button type="button" class="btn btn-primary">Add Student</button> 
 			</a>
 		</div>
 		<br />
