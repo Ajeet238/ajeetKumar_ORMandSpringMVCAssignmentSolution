@@ -12,7 +12,7 @@ import com.gl.customerData.service.CustomerService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 
-@Controller
+@Controller 
 @RequestMapping({ "/customer" })
 public class CustomerController
 {

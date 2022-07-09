@@ -30,7 +30,7 @@
 			value="jdbc:mysql://localhost:3306/studentdatabase" />
 		<property name="username" value="root" />
 		<property name="password" value="Ltelte@33" />
-	</bean>
+	</bean> 
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">

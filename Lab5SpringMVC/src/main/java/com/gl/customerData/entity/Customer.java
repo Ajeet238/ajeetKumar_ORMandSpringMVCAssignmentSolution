@@ -1,4 +1,4 @@
-package com.gl.customerData.entity;
+ package com.gl.customerData.entity;
 
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 
 @Entity
 @Table(name = "student")
-public class Customer
+public class Customer 
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
