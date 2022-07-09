@@ -1,22 +1,24 @@
-package com.gl.studentData.service;
+package com.gl.customerData.service;
 
 import org.hibernate.Transaction;
 import java.io.Serializable;
 import javax.transaction.Transactional;
-import com.gl.studentData.entity.Student;
+
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
+import com.gl.customerData.entity.Customer;
+
 @Repository
-public class StudentServiceImpl implements StudentService
+public class CustomerServiceImpl implements CustomerService
 {
     private SessionFactory sessionfactory;
     private Session session;
     
-    public StudentServiceImpl(final SessionFactory sessionfactory) {
+    public CustomerServiceImpl(final SessionFactory sessionfactory) {
         this.sessionfactory = sessionfactory;
         try {
             this.session = this.sessionfactory.getCurrentSession();
@@ -28,29 +30,29 @@ public class StudentServiceImpl implements StudentService
     
     @Transactional
     @Override
-    public List<Student> findAllStudent() {
-        final List<Student> studentList = (List<Student>)this.session.createQuery("from Student").list();
-        return studentList;
+    public List<Customer> findAllCustomer() {
+        final List<Customer> CustomerList = (List<Customer>)this.session.createQuery("from Customer").list();
+        return CustomerList;
     }
     
     @Transactional
     @Override
-    public Student findById(final Integer id) {
-        final Student student = (Student)this.session.get((Class)Student.class, (Serializable)id);
-        return student;
+    public Customer findById(final Integer id) {
+        final Customer Customer = (Customer)this.session.get((Class)Customer.class, (Serializable)id);
+        return Customer;
     }
     
     @Transactional
     @Override
-    public void save(final Student student) {
+    public void save(final Customer Customer) {
         final Transaction tr = this.session.beginTransaction();
-        this.session.saveOrUpdate((Object)student);
+        this.session.saveOrUpdate((Object)Customer);
         tr.commit();
     }
     
     @Transactional
     @Override
-    public void remove(final Student s) {
+    public void remove(final Customer s) {
         final Transaction tr = this.session.beginTransaction();
         this.session.delete((Object)s);
         tr.commit();
@@ -58,27 +60,29 @@ public class StudentServiceImpl implements StudentService
     
     @Transactional
     @Override
-    public List<Student> findByParam(final String firstName, final String lastName, final String email) {
-        List<Student> ls = null;
+    public List<Customer> findByParam(final String firstName, final String lastName, final String email) {
+        List<Customer> ls = null;
         String query = "";
         if (firstName != null && lastName != null && email != null) {
-            query = "from Student where firstName like '%" + firstName + "%' and lastName like '%" + lastName + "%' and email like '%" + email + "%'";
+            query = "from Customer where firstName like '%" + firstName + "%' and lastName like '%" + lastName + "%' and email like '%" + email + "%'";
         }
         else if (firstName != null && lastName == null && email == null) {
-            query = "from Student where firstName like '%" + firstName + "%'";
+            query = "from Customer where firstName like '%" + firstName + "%'";
         }
         else if (firstName == null && lastName != null && email == null) {
-            query = "from Student where lastName like '%" + lastName + "%'";
+            query = "from Customer where lastName like '%" + lastName + "%'";
         }
         else if (firstName == null && lastName == null && email != null) {
-            query = "from Student where email like '%" + email + "%'";
+            query = "from Customer where email like '%" + email + "%'";
         }
         else {
-            query = "from Student";
+            query = "from Customer";
         }
         if (query.length() != 0) {
-            ls = (List<Student>)this.session.createQuery(query).list();
+            ls = (List<Customer>)this.session.createQuery(query).list();
         }
         return ls;
-    }
+    
+
+}
 }

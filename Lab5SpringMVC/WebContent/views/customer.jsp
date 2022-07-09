@@ -16,7 +16,7 @@
 	crossorigin="anonymous"></script>
 
 <meta charset="ISO-8859-1">
-<title>Student Data</title>
+<title>Customer Data</title>
 </head>
 <body>
 
@@ -51,8 +51,8 @@
 	<div class="container">
 		<br />
 		<div class="col-sm">
-			<a href="addStudent?id=-1">
-				<button type="button" class="btn btn-primary">Add Student</button>
+			<a href="addcustomer?id=-1">
+				<button type="button" class="btn btn-primary">Add Customer</button>
 			</a>
 		</div>
 		<br />
@@ -67,7 +67,7 @@
 				</tr>
 
 			</thead>
-			<c:forEach items="${stud}" var="b">
+			<c:forEach items="${cust}" var="b">
 				<tbody>
 					<tr>
 
@@ -75,7 +75,7 @@
 						<td>${b.firstName}</td>
 						<td>${b.lastName}</td>
 						<td>${b.email }</td>
-						<td><a href="addStudent?id=${b.id}">Update || </a><a
+						<td><a href="addcustomer?id=${b.id}">Update || </a><a
 							href="delete?id=${b.id}"
 							onclick="return confirm('Are you sure you want to delete this item?');">Delete</a></td>
 					</tr>

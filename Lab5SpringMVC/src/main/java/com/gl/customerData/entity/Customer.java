@@ -1,4 +1,4 @@
-package com.gl.studentData.entity;
+package com.gl.customerData.entity;
 
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 
 @Entity
 @Table(name = "student")
-public class Student
+public class Customer
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,13 +17,13 @@ public class Student
     private String lastName;
     private String email;
     
-    public Student(final String firstName, final String lastName, final String email) {
+    public Customer(final String firstName, final String lastName, final String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
     
-    public Student() {
+    public Customer() {
     }
     
     public Integer getId() {

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Update Student Data</title>
+<title>Update Customer Data</title>
 
 <!--  Bootstrap Integration -->
 <link rel="stylesheet"
@@ -53,22 +53,22 @@
 			<div class="form-group">
 				<label for="exampleInputEmail1">FirstName</label> <input type="text"
 					class="form-control" placeholder="Enter email"
-					value="${addNewStud.firstName}" name="firstName">
+					value="${addNewCust.firstName}" name="firstName">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputPassword1">LastName</label> <input
 					type="text" class="form-control" placeholder="Last Name"
-					value="${addNewStud.lastName}" name="lastName">
+					value="${addNewCust.lastName}" name="lastName">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputPassword1">Email</label> <input type="email"
 					class="form-control" placeholder="Email"
-					value="${addNewStud.email}" name="email">
+					value="${addNewCust.email}" name="email">
 			</div>
 			<div class="row justify-content-between">
 				<div class="col-sm-4">
 					<button type="submit" class="btn btn-primary"
-						value='${addNewStud.id}' name="id">Submit</button>
+						value='${addNewCust.id}' name="id">Submit</button>
 				</div>
 				<div class="col-sm-4">
 					<a href="list">

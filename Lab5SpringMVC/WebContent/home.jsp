@@ -47,9 +47,9 @@
 		</div>
 	</nav>
 	<div class=container>
-		<h3>Click below to see the full list of students</h3>
+		<h3>Click below to see the full list of Customer</h3>
 		<div class="col-sm-4">
-			<a href="student/list">
+			<a href="customer/list">
 				<button type="button" class="btn btn-primary">Show List</button>
 			</a>
 		</div>

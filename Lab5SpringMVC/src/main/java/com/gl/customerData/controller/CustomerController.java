@@ -1,26 +1,29 @@
-package com.gl.studentData.controller;
+package com.gl.customerData.controller;
 
 import org.springframework.web.bind.annotation.RequestParam;
-import com.gl.studentData.entity.Student;
+
 import java.util.List;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.gl.studentData.service.StudentService;
+
+import com.gl.customerData.entity.Customer;
+import com.gl.customerData.service.CustomerService;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 
 @Controller
-@RequestMapping({ "/student" })
-public class StudentController
+@RequestMapping({ "/customer" })
+public class CustomerController
 {
     @Autowired
-    private StudentService ss;
+    private CustomerService ss;
     
     @RequestMapping({ "/list" })
     public String findAll(final Model model) {
-        final List<Student> studentList = (List<Student>)this.ss.findAllStudent();
-        model.addAttribute("stud", (Object)studentList);
-        return "student";
+        final List<Customer> customerList = (List<Customer>)this.ss.findAllCustomer();
+        model.addAttribute("cust", (Object)customerList);
+        return "customer";
     }
     
     @RequestMapping({ "/gl" })
@@ -28,19 +31,19 @@ public class StudentController
         return "return";
     }
     
-    @RequestMapping({ "/addStudent" })
+    @RequestMapping({ "/addcustomer" })
     public String findById(@RequestParam("id") final Integer id, final Model model) {
         if (id != -1) {
             System.out.println("id is: " + id);
-            final Student s = this.ss.findById(id);
+            final Customer s = this.ss.findById(id);
             System.out.println(s);
-            model.addAttribute("addNewStud", (Object)s);
+            model.addAttribute("addNewCust", (Object)s);
         }
         else {
-            final Student newStud = new Student();
-            newStud.setId(Integer.valueOf(-1));
-            System.out.println("id is :" + newStud.getId());
-            model.addAttribute("addNewStud", (Object)newStud);
+            final Customer newcust = new Customer();
+            newcust.setId(Integer.valueOf(-1));
+            System.out.println("id is :" + newcust.getId());
+            model.addAttribute("addNewCust", (Object)newcust);
         }
         return "update";
     }
@@ -48,7 +51,7 @@ public class StudentController
     @RequestMapping({ "/save" })
     public String save(@RequestParam("id") final Integer id, @RequestParam("firstName") final String firstName, @RequestParam("lastName") final String lastName, @RequestParam("email") final String email) {
         System.out.println("id is" + id);
-        Student s = null;
+        Customer s = null;
         if (id != -1) {
             s = this.ss.findById(id);
             s.setFirstName(firstName);
@@ -56,15 +59,15 @@ public class StudentController
             s.setEmail(email);
         }
         else {
-            s = new Student(firstName, lastName, email);
+            s = new Customer(firstName, lastName, email);
         }
         this.ss.save(s);
         return "redirect:list";
     }
     
     @RequestMapping({ "/delete" })
-    public String deleteStudent(@RequestParam("id") final Integer id) {
-        Student s = null;
+    public String deletecustomer(@RequestParam("id") final Integer id) {
+        Customer s = null;
         System.out.println(s);
         s = this.ss.findById(id);
         this.ss.remove(s);
@@ -73,13 +76,13 @@ public class StudentController
     
     @RequestMapping({ "/search" })
     public String searchBook(@RequestParam("firstName") final String firstName, @RequestParam("lastName") final String lastName, @RequestParam("country") final String country, final Model model) {
-        final List<Student> studentList = (List<Student>)this.ss.findByParam(firstName, lastName, country);
-        if (studentList.size() != 0) {
-            model.addAttribute("stud", (Object)studentList);
+        final List<Customer> customerList = (List<Customer>)this.ss.findByParam(firstName, lastName, country);
+        if (customerList.size() != 0) {
+            model.addAttribute("cust", (Object)customerList);
         }
         else {
             model.addAttribute("error", (Object)"No Book Found");
         }
-        return "student";
+        return "customer";
     }
 }

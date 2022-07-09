@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Student DataBase</title>
+<title>Customer DataBase</title>
 <!--  Bootstrap Integration -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -48,7 +48,7 @@
 	</nav>
 	<br />
 	<div class=container>
-		<h3>Click below to see the full list of students</h3>
+		<h3>Click below to see the full list of customer</h3>
 		<div class="col-sm-4">
 			<a href="list">
 				<button type="button" class="btn btn-primary">Show List</button>
